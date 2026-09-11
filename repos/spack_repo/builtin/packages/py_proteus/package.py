@@ -15,13 +15,14 @@ class PyProteus(PythonPackage):
     for rapidly developing computer models and numerical methods"""
 
     homepage = "http://proteustoolkit.org"
-    git = "https://github.com/cekees/proteus.git"
+    git = "https://github.com/erdc/proteus.git"
 
     maintainers("cekees")
 
     license("MIT")
 
     version("main", branch="main")
+    version("1.9.0", sha256="48f54a60c12b5d7e1456dba69d25800ae73c0444")
 
     variant("pumi", default=True, description="Enable PUMI mesh adaptation support")
     variant("chrono", default=True, description="Enable Chrono modeling support")
