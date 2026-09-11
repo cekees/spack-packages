@@ -22,7 +22,7 @@ class PyProteus(PythonPackage):
     license("MIT")
 
     version("main", branch="main")
-    version("1.9.0", sha256="48f54a60c12b5d7e1456dba69d25800ae73c0444")
+    version("1.9.0", commit="48f54a60c12b5d7e1456dba69d25800ae73c0444")
 
     variant("pumi", default=True, description="Enable PUMI mesh adaptation support")
     variant("chrono", default=True, description="Enable Chrono modeling support")
