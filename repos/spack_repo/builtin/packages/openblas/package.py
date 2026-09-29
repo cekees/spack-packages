@@ -671,8 +671,8 @@ class MakefileBuilder(makefile.MakefileBuilder):
             # on linux-alderlake/gcc. That is the race this method's docstring is
             # about, and the reason it overrides 'make all' in the first place.
             #
-            # TEMPORARY: carried on this branch pending an upstream fix; drop it
-            # once spack/spack-packages takes the change.
+            # See https://github.com/spack/spack-packages/issues/6278 for the
+            # full report and reproducer.
             for target in ("libs", "netlib", "shared"):
                 make("-s", target, *self.make_defs)
 

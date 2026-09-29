@@ -35,9 +35,6 @@ class Chrono(CMakePackage):
     variant("shared", default=True, description="Build shared libraries")
     variant("simd", default=False, description="Enable SIMD vectorization")
 
-    # Chrono compiles C as well as C++ (e.g. chrono_thirdparty/libstl/stlfile.c),
-    # so both must be declared -- omitting "c" fails at cmake time with
-    # "[spack cc]: Error: SPACK_CC_* variables not set".
     depends_on("c", type="build")
     depends_on("cxx", type="build")
     depends_on("cmake@3.18:", type="build")
@@ -80,9 +77,6 @@ class Chrono(CMakePackage):
         header = join_path(self.stage.source_path, "src", "chrono", "core", "ChClassFactory.h")
         if not os.path.exists(header):
             return
-        with open(header) as f:
-            if "#include <type_traits>" in f.read():
-                return
         filter_file(r"^#include <cstdio>$", "#include <cstdio>\n#include <type_traits>", header)
 
     def cmake_args(self):
