@@ -32,7 +32,7 @@ class PyProteus(PythonPackage):
     depends_on("python@3.9:", type=("build", "run"))
     depends_on("py-setuptools@61:", type="build")
     depends_on("py-cython@3", type="build")
-    depends_on("py-pybind11@2.11:2", type="build")  # xtensor@0.27.1 *= overload issue
+    depends_on("py-pybind11@2.11:", type="build")
     depends_on("py-numpy@1.25:2", type=("build", "run"))
     depends_on("py-scipy", type="run")  # runtime only: not in [build-system] requires
     # proteus/richards/{ADR,Richards}.py and proteus/m_comp_co2/m_comp_co2.py
@@ -55,9 +55,6 @@ class PyProteus(PythonPackage):
     depends_on("pumi@4.2.1:+zoltan+shared", when="+pumi")  # <4.2.1 requires patch
     depends_on("zoltan+parmetis~fortran", when="+pumi")
     depends_on("parmetis")
-    depends_on("xtensor@0.26.0")
-    depends_on("xtensor-python@0.28.0:")
-    depends_on("xtl")
 
     def _mpi_dir(self):
         # try to find the right mpi.h as it's not always in self.spec["mpi"]
@@ -91,6 +88,3 @@ class PyProteus(PythonPackage):
 
         if self.spec.satisfies("+chrono"):
             env.set("CHRONO_DIR", self.spec["chrono"].prefix)
-
-        for dep in ("xtensor", "xtensor-python", "xtl"):
-            env.prepend_path("CPATH", self.spec[dep].prefix.include)
