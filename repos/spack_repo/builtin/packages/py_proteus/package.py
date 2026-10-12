@@ -35,9 +35,6 @@ class PyProteus(PythonPackage):
     depends_on("py-pybind11@2.11:2", type="build")  # xtensor@0.27.1 *= overload issue
     depends_on("py-numpy@1.25:2", type=("build", "run"))
     depends_on("py-scipy", type="run")  # runtime only: not in [build-system] requires
-    # proteus/richards/{ADR,Richards}.py and proteus/m_comp_co2/m_comp_co2.py
-    # still use `from builtins ...` / `from past.utils ...`
-    depends_on("py-future", type=("build", "run"))
     depends_on("py-mpi4py", type=("build", "run"))
     depends_on("py-petsc4py", type=("build", "run"))
     depends_on("py-h5py+mpi", type=("build", "run"))
