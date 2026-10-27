@@ -15,7 +15,7 @@ class PyProteus(PythonPackage):
     for rapidly developing computer models and numerical methods"""
 
     homepage = "http://proteustoolkit.org"
-    git = "https://github.com/erdc/proteus.git"
+    git = "https://github.com/proteustoolkit/proteus.git"
 
     maintainers("cekees")
 
